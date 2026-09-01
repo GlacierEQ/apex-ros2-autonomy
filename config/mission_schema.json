@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://apex.autonomy/mission_schema.json",
+    "type": "object",
+    "required": ["operation_id", "actions", "target_system", "timestamp"],
+    "properties": {
+        "operation_id": {"type": "string"},
+        "actions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["action_type", "parameters", "sequence_number"],
+                "properties": {
+                    "action_type": {
+                        "type": "string",
+                        "enum": ["NAVIGATE", "MANEUVER", "DEPLOY", "ABORT", "TELEMETRY_SYNC"]
+                    },
+                    "parameters": {"type": "object"},
+                    "sequence_number": {"type": "integer"}
+                }
+            }
+        },
+        "target_system": {"type": "string"},
+        "timestamp": {"type": "number"},
+        "changeset_hash": {"type": "string"}
+    }
+}
